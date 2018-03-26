@@ -43,7 +43,7 @@ timeout(1000).then(value => {
 
 ```javascript
 let promise = new Promise(function(resolve, reject) {
-    console.log('Promise);
+    console.log('Promise');
     resolve();
 });
 
@@ -142,7 +142,7 @@ p
 
 ```javascript
 
-const jsPromise = Promise.resolve($.ajax('/whatever.json));
+const jsPromise = Promise.resolve($.ajax('/whatever.json'));
 
 ```
 上面代码将jQuery生成的deferred对象，转为一个新的Promise对象。
@@ -153,7 +153,7 @@ Promise.resolve等价于下面的写法：
 
 Promise.resolve('foo')
 //等价于
-new Promise(resolve=>resolve('foo))
+new Promise(resolve=>resolve('foo'))
 
 ```
 
