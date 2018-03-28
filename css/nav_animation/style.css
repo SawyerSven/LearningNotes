@@ -1,0 +1,29 @@
+.list{
+    list-style: none;
+}
+.list li{
+    width: 100px;
+    display: inline-block;
+    padding:5px 10px;
+    text-align: center;
+    position: relative;
+    
+}
+.list li::before{
+    content:"";
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    border-bottom:2px solid red;
+    transition: .2s all ease-in;
+}
+.list li:hover::before{
+    left:0;
+    width:100%;
+}
+
+.list li:hover ~ li::before{
+    left:0;
+}
