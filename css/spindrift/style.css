@@ -1,0 +1,31 @@
+html,body{margin: 0;padding: 0;background-color: #000;}
+.title{color:#fff;text-align: center;font-size: 28px;margin-top: 50px;}
+.wp{content:'';display: block;width: 240px;height: 240px;overflow:hidden ;background-color: #4ac4f0;border-radius: 50%}
+.circle{width: 400px;margin-top: -220px;margin-left: -80px;height: 400px;transform-origin: 49% 47%;border-radius: 45%;background-color: #fff;animation: 3s rotate linear infinite}
+.boat{position: absolute;height: 80px;width: 80px;left: 88px;z-index: 1;top: 133px;animation:3s float linear infinite}
+.container{position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%)}
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg)
+    }to{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes float {
+    0% {
+        top: 110px;
+        transform: rotate(-10deg);
+    }
+    50% {
+        top:80px;
+        transform: rotate(10deg);
+    }
+    100%{
+        top:110px;
+        transform: rotate(-10deg);
+
+    }
+
+}
