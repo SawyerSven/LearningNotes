@@ -50,3 +50,5 @@ async函数返回的是Promise对象，可以作为await命令的参数。
 
 - 正常情况下,await命令后面是一个Promise对象。如果不是，会被转成一个立即resolve的Promise对象。
 
+- await命令后面的 Promise 对象如果变为reject状态，则reject的参数会被catch方法的回调函数接收到。
+
