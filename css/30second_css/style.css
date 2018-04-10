@@ -1,0 +1,18 @@
+.refrence {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: #000;
+}
+
+.popup {
+  position: absolute;
+  display: none;
+  left: 100%;
+  width: 100px;
+  height: 20px;
+  background: #ff0000;
+}
+.refrence:hover > .popup {
+    display: block;
+}

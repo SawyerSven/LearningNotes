@@ -215,3 +215,73 @@ padding-top在..上::before为元素使元素的高度等于其宽度的百分�
     z-index: -1;
 }
 ```
+
+## 一像素边框
+
+```html
+
+   <div class="hairline-border"></div>
+
+```
+
+```css
+.hairline-border {
+  box-shadow: 0 0 0 1px;
+}
+
+@media (min-resolution: 2dppx) {
+  .hairline-border {
+    box-shadow: 0 0 0 0.5px;
+  }
+}
+
+@media (min-resolution: 3dppx) {
+  .hairline-border {
+    box-shadow: 0 0 0 0.3333333px;
+  }
+}
+
+@media (min-resolution: 4dppx) {
+  .hairline-border {
+    box-shadow: 0 0 0 0.25px;
+  }
+}
+
+````
+
+## 弹出菜单
+
+悬停是显示交互式弹出菜单
+
+```html
+  <div class="refrence">
+        <div class="popup">弹出菜单</div>
+</div>
+```
+
+```css
+.refrence {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: #000;
+}
+
+.popup {
+  position: absolute;
+  display: none;
+  left: 100%;
+  width: 100px;
+  height: 20px;
+  background: #ff0000;
+}
+.refrence:hover > .popup {
+    display: block;
+}
+```
+
+#### 说明
+
+- .reference:hove>.popup意味着当.reference悬停在上方时，选择具有.popup类的直接子元素并将他们的visibility更改为visible。
+
+
