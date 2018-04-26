@@ -137,3 +137,23 @@ for (let key in sums) {
 根据乙最后换位思考的过程，我们遍历sums的每一个key。再根据排除条件，即和的分解对应的积的因式分解是否唯一，来确定可能的结果。
 
 
+```js
+
+for (let key in sums) {
+  let pairs = sums[key];
+  let r = pairs.filter(pair => {
+    let ps = products[pair.x * pair.y];
+    let r = ps.filter(p => {
+      return p.x + p.y in sums;
+    });
+    if (r.length == 1) {
+      return true;
+    }
+    return false;
+  });
+  if (r.length == 1) {
+    console.log(r);
+  }
+}
+
+```
