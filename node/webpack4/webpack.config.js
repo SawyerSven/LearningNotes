@@ -66,51 +66,137 @@ module.exports = {
 };
  */
 
+// "use strict";
+
+// const path = require("path");
+// const HtmlWebpackPlugin = require("html-webpack-plugin");
+// const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
+
+// const styleLess = new ExtractTextWebpackPlugin('css/style.css');
+// const resetCss = new ExtractTextWebpackPlugin('css/reset.css');
+
+// module.exports = {
+//   entry: "./src/index.js",
+//   output: {
+//     filename: "[name].js",
+//     path: path.resolve("dist")
+//   },
+//   module: {
+//     rules: [
+//       {
+//         test: /\.css$/, // 解析css
+//         use: ExtractTextWebpackPlugin.extract({
+//           use: "css-loader"
+//         }) // 从右向左解析
+//         /*
+//           也可以这样写，这种方式方便写一些配置参数
+
+//           use:[
+//             {loader:'style-loader'},
+//             {loader:'css-loader'},
+//             {loader:'less-loader'}
+//           ]
+//          */
+//       },
+//       {
+//         test: /\.less$/,
+//         use:ExtractTextWebpackPlugin.extract({
+//           use:['css-loader','less-loader']
+//         })
+//       }
+//     ]
+//   },
+//   plugins: [
+//     new HtmlWebpackPlugin({
+//       // 用哪个html作为模板
+//       template: "./src/index.html",
+//       hash: true
+//     }),
+//    styleLess,
+//    resetCss
+//   ],
+//   devServer: {},
+//   mode: "development"
+// };
+
 "use strict";
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: "./src/index.js",
   output: {
-    filename: "[name].js",
+    filename: "bundle.js",
     path: path.resolve("dist")
+  },
+  resolve:{
+    // 别名
+    alias:{
+      $:'./src/'
+    },
+    //省略后缀
+    extensions:['.js','.json','.css']
   },
   module: {
     rules: [
       {
-        test: /\.css$/, // 解析css
+        test: /\.css$/,
         use: ExtractTextWebpackPlugin.extract({
-          use: "css-loader"
-        }) // 从右向左解析
-        /* 
-          也可以这样写，这种方式方便写一些配置参数
-
-          use:[
-            {loader:'style-loader'},
-            {loader:'css-loader'},
-            {loader:'less-loader'}
-          ]
-         */
+          fallback:"style-loader",
+          use:['css-loader','postcss-loader']
+        })
       },
       {
-        test: /\.less$/,
-        use:ExtractTextWebpackPlugin.extract({
-          use:['css-loader','less-loader']
-        })
+        test:'/\.js$/',
+        use:'babel-loader',
+        include:/src/,  //只转化src目录下的js
+        exclude:/node_modules/  // 排除掉node_modules,优化打包速度
+      },
+      {
+        test: /\.(jpeg|png|gif)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192, // 小于8k的图片自动转成base64格式，并且不会存在实体图片
+              outputPath: "images" // 存放图片的目录
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(htm|html)$/,
+        use: "html-withimg-loader"
+      },
+      {
+        test: /\.(eot||ttf||woff||svg)$/,
+        use: "file-loader"
       }
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      // 用哪个html作为模板
-      template: "./src/index.html",
-      hash: true
+    new CleanWebpackPlugin('dist'),
+
+    new ExtractTextWebpackPlugin({
+      filename:'style.css'
     }),
-    new ExtractTextWebpackPlugin('css/style.css')
+
+    new HtmlWebpackPlugin({
+      template:'./src/index.html',
+      hash:true
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
-  devServer: {},
+  devServer: {
+    contentBase:'./dist',
+    host:'localhost',
+    port:3000,
+    open:true,
+    hot:true
+  },
   mode: "development"
 };

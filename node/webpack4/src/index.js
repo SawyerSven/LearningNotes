@@ -1,6 +1,5 @@
 
 
-import './less/style.less';
 import './css/style.css';
 
 let a = 1;
@@ -10,3 +9,8 @@ let a = 1;
   console.log(test);
 })(a)
 
+
+
+if(module.hot){
+  module.hot.accept();
+}
