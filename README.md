@@ -18,6 +18,8 @@
 
 - [Vue双向数据绑定实现](https://github.com/SawyerSven/LearningNotes/blob/master/javascript/Vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E5%AE%9E%E7%8E%B0/index.md)
 
+- [Vue脚手架学习](https://github.com/SawyerSven/LearningNotes/master/javascript/Vue脚手架学习/)
+
 #### Javascript基础
 
 - [call,apply和bind的异同](https://github.com/SawyerSven/LearningNotes/blob/master/javascript/call%2Capply%E5%92%8Cbind/index.md)
@@ -28,6 +30,7 @@
 
 - [原型链](https://github.com/SawyerSven/LearningNotes/blob/master/javascript/%E5%8E%9F%E5%9E%8B%E9%93%BE/index.md)
 
+- [JSONP原理和实现](https://github.com/SawyerSven/LearningNotes/blob/master/javascript/JsonP的原理与实现/index.md)
 
 ### Node基础
 
