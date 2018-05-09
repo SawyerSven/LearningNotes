@@ -1,4 +1,3 @@
-const mocha = require("mocha");
 const expect = require("chai").expect;
 
 const toNoCase = require("./");
@@ -12,7 +11,7 @@ describe("to-no-case", function() {
 
   describe("camel", () => {
     it("should remove camel case", () => {
-      expect(toNoCase("thisIsAString")).to.be.equal("thisisastring");
+      expect(toNoCase("thisIsAString")).to.be.equal("this is a string");
     });
   });
 
@@ -35,15 +34,15 @@ describe("to-no-case", function() {
   });
   describe("pascal", () => {
     it("should remove pascal case", () => {
-      expect(toNoCase("ThisIsAString")).to.be.equal("thisisastring");
+      expect(toNoCase("ThisIsAString")).to.be.equal("this is a string");
     });
 
     it("should handle single letter first words", () => {
-      expect(toNoCase("AStringIsThis")).to.be.equal("astringisthis");
+      expect(toNoCase("AStringIsThis")).to.be.equal("a string is this");
     });
 
     it("should handle single letter first words with two words", () => {
-      expect(toNoCase("AString")).to.be.equal("astring");
+      expect(toNoCase("AString")).to.be.equal("a string");
     });
   });
 
