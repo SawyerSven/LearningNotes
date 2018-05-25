@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = bu=>`Hello ${bu}`;
+module.exports = (bu, callback) => process.nextTick(() => callback(`Hello ${bu}`));
